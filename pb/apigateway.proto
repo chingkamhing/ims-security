@@ -1,0 +1,149 @@
+syntax = "proto3";
+
+package creapptive.api;
+
+import "message.proto";
+import "google/api/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+	info: {
+		title: "IMS Security Management System API";
+		version: "1.0";
+		contact: {
+			name: "creapptive/go-micro";
+			url: "https://www.creapptive.com/";
+			email: "demo@creapptive.com";
+        };
+    };
+    schemes: HTTP;
+    consumes: "application/json";
+    produces: "application/json";
+    responses: {
+		key: "404";
+		value: {
+			description: "Returned when the resource does not exist.";
+			schema: {
+				json_schema: {
+					type: STRING;
+				}
+			}
+		}
+	}
+};
+
+service Apigateway {
+    rpc Login(message.LoginRequest) returns (message.LoginReply) {
+		option (google.api.http) = {
+			post: "/api/account/login"
+			body: "*"
+		};
+	}
+    rpc CreateUser(message.CreateUserRequest) returns (message.CreateUserReply) {
+		option (google.api.http) = {
+			post: "/api/user/create"
+			body: "*"
+		};
+	}
+    rpc GetUsers(message.GetUsersRequest) returns (message.GetUsersReply) {
+		option (google.api.http) = {
+			get: "/api/user/info"
+		};
+	}
+    rpc GetUserByID(message.GetUserByIDRequest) returns (message.GetUserByIDReply) {
+		option (google.api.http) = {
+			post: "/api/user/info"
+		};
+	}
+    rpc UpdateUser(message.UpdateUserRequest) returns (message.UpdateUserReply) {
+		option (google.api.http) = {
+			post: "/api/user/update"
+			body: "*"
+		};
+	}
+    rpc DeleteUser(message.DeleteUserRequest) returns (message.DeleteUserReply) {
+		option (google.api.http) = {
+			post: "/api/user/delete"
+			body: "*"
+		};
+	}
+    rpc ChangePassword(message.ChangePasswordRequest) returns (message.ChangePasswordReply) {
+		option (google.api.http) = {
+			post: "/api/user/password"
+			body: "*"
+		};
+	}
+    rpc ResetPassword(message.ResetPasswordRequest) returns (message.ResetPasswordReply) {
+		option (google.api.http) = {
+			post: "/api/user/reset"
+			body: "*"
+		};
+	}
+    rpc GetMyself(message.GetMyselfRequest) returns (message.GetMyselfReply) {
+		option (google.api.http) = {
+			get: "/api/user/myself"
+		};
+	}
+    rpc CreatePrivilegeProfile(message.CreatePrivilegeProfileRequest) returns (message.CreatePrivilegeProfileReply) {
+		option (google.api.http) = {
+			post: "/api/privilege-profile/create"
+			body: "*"
+		};
+	}
+    rpc GetPrivilegeProfiles(message.GetPrivilegeProfilesRequest) returns (message.GetPrivilegeProfilesReply) {
+		option (google.api.http) = {
+			get: "/api/privilege-profile/info"
+		};
+	}
+    rpc GetPrivilegeProfileByID(message.GetPrivilegeProfileByIDRequest) returns (message.GetPrivilegeProfileByIDReply) {
+		option (google.api.http) = {
+			post: "/api/privilege-profile/info"
+			body: "*"
+		};
+	}
+    rpc UpdatePrivilegeProfile(message.UpdatePrivilegeProfileRequest) returns (message.UpdatePrivilegeProfileReply) {
+		option (google.api.http) = {
+			post: "/api/privilege-profile/update"
+			body: "*"
+		};
+	}
+    rpc DeletePrivilegeProfile(message.DeletePrivilegeProfileRequest) returns (message.DeletePrivilegeProfileReply) {
+		option (google.api.http) = {
+			post: "/api/privilege-profile/delete"
+			body: "*"
+		};
+	}
+    rpc GetLocationTree(message.GetLocationTreeRequest) returns (message.GetLocationTreeReply) {
+		option (google.api.http) = {
+			get: "/api/location/info"
+		};
+	}
+    rpc UpdateLocationTree(message.UpdateLocationTreeRequest) returns (message.UpdateLocationTreeReply) {
+		option (google.api.http) = {
+			post: "/api/location/update"
+			body: "*"
+		};
+	}
+    rpc GetScopeTree(message.GetScopeTreeRequest) returns (message.GetScopeTreeReply) {
+		option (google.api.http) = {
+			get: "/api/scope/info"
+		};
+	}
+    rpc UpdateScopeTree(message.UpdateScopeTreeRequest) returns (message.UpdateScopeTreeReply) {
+		option (google.api.http) = {
+			post: "/api/scope/update"
+			body: "*"
+		};
+	}
+    rpc ChangeVersion(message.ChangeVersionRequest) returns (message.ChangeVersionReply) {
+		option (google.api.http) = {
+			post: "/api/version"
+		};
+	}
+}
+
+// async interface definitions
+
+message ApigatewayMessage {
+	string say = 1;
+}
