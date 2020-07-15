@@ -1,2 +1,2 @@
-API endpoints definition for IMS Security Management System.
+API endpoints definition for IMS Security Management System project.
 
