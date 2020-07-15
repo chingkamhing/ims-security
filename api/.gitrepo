@@ -6,7 +6,7 @@
 [subrepo]
 	remote = ../microservices/ims-security-api
 	branch = master
-	commit = 181c17e33d3d01bc3e696123ae89d9e9b5f2a790
+	commit = 1c40f223739200114e2104cdb96e63ee4fd044ab
 	parent = 6914365dcd8afdc6229cda271674e6f547748dd6
 	method = merge
 	cmdver = 0.4.1
