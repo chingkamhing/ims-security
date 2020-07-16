@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = /home/kamching/work/creapptive/repository/microservices/gateway
+	branch = master
+	commit = 47308b201984bd64cd360e0e4daaffc55d9a5171
+	parent = 54ee688d3295c06d221dd8fa4af7bc742654b60b
+	method = merge
+	cmdver = 0.4.1
