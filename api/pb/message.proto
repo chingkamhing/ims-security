@@ -12,7 +12,7 @@ message LoginRequest {
 }
 
 message LoginReply {
-    model.Myself myself = 1;
+    model.Myself data = 1;              // response with data of model.Myself
     string error = 2;
 }
 
@@ -21,7 +21,7 @@ message CreateUserRequest {
 }
 
 message CreateUserReply {
-    model.User user = 1;
+    model.User data = 1;                // response with data of model.User
     string error = 2;
 }
 
@@ -30,7 +30,7 @@ message GetUsersRequest {
 }
 
 message GetUsersReply {
-    map<string, model.User> user = 1;
+    map<string, model.User> data = 1;   // response with data of object where user ID as key and model.User as value
     string error = 2;
 }
 
@@ -39,7 +39,7 @@ message GetUserByIDRequest {
 }
 
 message GetUserByIDReply {
-    model.User user = 1;
+    model.User data = 1;                // response with data of model.User
     string error = 2;
 }
 
@@ -48,7 +48,7 @@ message UpdateUserRequest {
 }
 
 message UpdateUserReply {
-    model.User user = 1;
+    model.User data = 1;                // response with data of model.User
     string error = 2;
 }
 
@@ -57,7 +57,7 @@ message DeleteUserRequest {
 }
 
 message DeleteUserReply {
-    string id = 1;
+    string data = 1;                    // response with data of user ID string
     string error = 2;
 }
 
@@ -68,7 +68,7 @@ message ChangePasswordRequest {
 }
 
 message ChangePasswordReply {
-    string id = 1;
+    string data = 1;                    // response with data of user ID string
     string error = 2;
 }
 
@@ -77,7 +77,7 @@ message ResetPasswordRequest {
 }
 
 message ResetPasswordReply {
-    string id = 1;
+    string data = 1;                    // response with data of user ID string
     string error = 2;
 }
 
@@ -86,7 +86,7 @@ message GetMyselfRequest {
 }
 
 message GetMyselfReply {
-    model.Myself myself = 1;
+    model.Myself data = 1;              // response with data of model.Myself
     string error = 2;
 }
 
@@ -95,7 +95,7 @@ message CreatePrivilegeProfileRequest {
 }
 
 message CreatePrivilegeProfileReply {
-    model.PrivilegeProfile privilegeProfile = 1;
+    model.PrivilegeProfile data = 1;                    // response with data of model.PrivilegeProfile
     string error = 2;
 }
 
@@ -104,7 +104,7 @@ message GetPrivilegeProfilesRequest {
 }
 
 message GetPrivilegeProfilesReply {
-    map<string, model.PrivilegeProfile> privilegeProfile = 1;
+    map<string, model.PrivilegeProfile> data = 1;       // response with data of object where privilege profile ID as key and model.PrivilegeProfile as value
     string error = 2;
 }
 
@@ -113,7 +113,7 @@ message GetPrivilegeProfileByIDRequest {
 }
 
 message GetPrivilegeProfileByIDReply {
-    model.PrivilegeProfile privilegeProfile = 1;
+    model.PrivilegeProfile data = 1;                    // response with data of model.PrivilegeProfile
     string error = 2;
 }
 
@@ -122,7 +122,7 @@ message UpdatePrivilegeProfileRequest {
 }
 
 message UpdatePrivilegeProfileReply {
-    model.PrivilegeProfile privilegeProfile = 1;
+    model.PrivilegeProfile data = 1;                    // response with data of model.PrivilegeProfile
     string error = 2;
 }
 
@@ -131,7 +131,7 @@ message DeletePrivilegeProfileRequest {
 }
 
 message DeletePrivilegeProfileReply {
-    string id = 1;
+    string data = 1;                                    // response with data of privilege profile ID string
     string error = 2;
 }
 
@@ -140,7 +140,8 @@ message GetLocationTreeRequest {
 }
 
 message GetLocationTreeReply {
-    repeated model.LocationNode locations = 1;
+    repeated model.LocationNode data = 1;               // response with data of model.LocationNode
+    string error = 2;
 }
 
 message UpdateLocationTreeRequest {
@@ -148,7 +149,7 @@ message UpdateLocationTreeRequest {
 }
 
 message UpdateLocationTreeReply {
-    repeated model.LocationNode locations = 1;
+    repeated model.LocationNode data = 1;               // response with data of model.LocationNode
     string error = 2;
 }
 
@@ -157,7 +158,7 @@ message GetScopeTreeRequest {
 }
 
 message GetScopeTreeReply {
-    repeated model.ScopeNode scopes = 1;
+    repeated model.ScopeNode data = 1;                  // response with data of model.ScopeNode
     string error = 2;
 }
 
@@ -166,7 +167,7 @@ message UpdateScopeTreeRequest {
 }
 
 message UpdateScopeTreeReply {
-    repeated model.ScopeNode scopes = 1;
+    repeated model.ScopeNode data = 1;                  // response with data of model.ScopeNode
     string error = 2;
 }
 
@@ -175,7 +176,7 @@ message ChangeVersionRequest {
 }
 
 message ChangeVersionReply {
-    model.ChangeVersion version = 1;
+    model.ChangeVersion data = 1;                       // response with data of model.ChangeVersion
     string error = 2;
 }
 

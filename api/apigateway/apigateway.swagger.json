@@ -691,7 +691,7 @@
     "messageChangePasswordReply": {
       "type": "object",
       "properties": {
-        "id": {
+        "data": {
           "type": "string"
         },
         "error": {
@@ -716,7 +716,7 @@
     "messageChangeVersionReply": {
       "type": "object",
       "properties": {
-        "version": {
+        "data": {
           "$ref": "#/definitions/modelChangeVersion"
         },
         "error": {
@@ -727,7 +727,7 @@
     "messageCreatePrivilegeProfileReply": {
       "type": "object",
       "properties": {
-        "privilegeProfile": {
+        "data": {
           "$ref": "#/definitions/modelPrivilegeProfile"
         },
         "error": {
@@ -746,7 +746,7 @@
     "messageCreateUserReply": {
       "type": "object",
       "properties": {
-        "user": {
+        "data": {
           "$ref": "#/definitions/modelUser"
         },
         "error": {
@@ -765,7 +765,7 @@
     "messageDeletePrivilegeProfileReply": {
       "type": "object",
       "properties": {
-        "id": {
+        "data": {
           "type": "string"
         },
         "error": {
@@ -784,7 +784,7 @@
     "messageDeleteUserReply": {
       "type": "object",
       "properties": {
-        "id": {
+        "data": {
           "type": "string"
         },
         "error": {
@@ -803,18 +803,21 @@
     "messageGetLocationTreeReply": {
       "type": "object",
       "properties": {
-        "locations": {
+        "data": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/modelLocationNode"
           }
+        },
+        "error": {
+          "type": "string"
         }
       }
     },
     "messageGetMyselfReply": {
       "type": "object",
       "properties": {
-        "myself": {
+        "data": {
           "$ref": "#/definitions/modelMyself"
         },
         "error": {
@@ -825,7 +828,7 @@
     "messageGetPrivilegeProfileByIDReply": {
       "type": "object",
       "properties": {
-        "privilegeProfile": {
+        "data": {
           "$ref": "#/definitions/modelPrivilegeProfile"
         },
         "error": {
@@ -844,7 +847,7 @@
     "messageGetPrivilegeProfilesReply": {
       "type": "object",
       "properties": {
-        "privilegeProfile": {
+        "data": {
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/modelPrivilegeProfile"
@@ -858,7 +861,7 @@
     "messageGetScopeTreeReply": {
       "type": "object",
       "properties": {
-        "scopes": {
+        "data": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/modelScopeNode"
@@ -872,7 +875,7 @@
     "messageGetUserByIDReply": {
       "type": "object",
       "properties": {
-        "user": {
+        "data": {
           "$ref": "#/definitions/modelUser"
         },
         "error": {
@@ -883,7 +886,7 @@
     "messageGetUsersReply": {
       "type": "object",
       "properties": {
-        "user": {
+        "data": {
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/modelUser"
@@ -897,7 +900,7 @@
     "messageLoginReply": {
       "type": "object",
       "properties": {
-        "myself": {
+        "data": {
           "$ref": "#/definitions/modelMyself"
         },
         "error": {
@@ -919,7 +922,7 @@
     "messageResetPasswordReply": {
       "type": "object",
       "properties": {
-        "id": {
+        "data": {
           "type": "string"
         },
         "error": {
@@ -938,7 +941,7 @@
     "messageUpdateLocationTreeReply": {
       "type": "object",
       "properties": {
-        "locations": {
+        "data": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/modelLocationNode"
@@ -963,7 +966,7 @@
     "messageUpdatePrivilegeProfileReply": {
       "type": "object",
       "properties": {
-        "privilegeProfile": {
+        "data": {
           "$ref": "#/definitions/modelPrivilegeProfile"
         },
         "error": {
@@ -982,7 +985,7 @@
     "messageUpdateScopeTreeReply": {
       "type": "object",
       "properties": {
-        "scopes": {
+        "data": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/modelScopeNode"
@@ -1007,7 +1010,7 @@
     "messageUpdateUserReply": {
       "type": "object",
       "properties": {
-        "user": {
+        "data": {
           "$ref": "#/definitions/modelUser"
         },
         "error": {
