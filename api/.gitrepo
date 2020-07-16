@@ -4,7 +4,7 @@
 ; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
 ;
 [subrepo]
-	remote = ../microservices/ims-security-api
+	remote = ~/work/creapptive/repository/microservices/ims-security-api
 	branch = master
 	commit = 1c40f223739200114e2104cdb96e63ee4fd044ab
 	parent = 6914365dcd8afdc6229cda271674e6f547748dd6
