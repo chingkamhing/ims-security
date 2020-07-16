@@ -5,7 +5,7 @@ import (
 
 	log "github.com/micro/go-micro/v2/logger"
 
-	user "creapptive/go-micro/api/user"
+	user "creapptive.com/ims-security/api/user"
 )
 
 type User struct{}

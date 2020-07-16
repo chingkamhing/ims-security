@@ -4,7 +4,7 @@
 package creapptive_api
 
 import (
-	message "creapptive/go-micro/api/message"
+	message "creapptive.com/ims-security/api/message"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	math "math"

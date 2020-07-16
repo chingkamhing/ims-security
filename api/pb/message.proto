@@ -4,7 +4,7 @@ package creapptive.message;
 
 import "model.proto";
 
-option go_package = "creapptive/go-micro/api/message";
+option go_package = "creapptive.com/ims-security/api/message";
 
 message LoginRequest {
     string username = 1;

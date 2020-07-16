@@ -4,7 +4,7 @@
 package message
 
 import (
-	_ "creapptive/go-micro/api/model"
+	_ "creapptive.com/ims-security/api/model"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	math "math"

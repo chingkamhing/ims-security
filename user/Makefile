@@ -2,7 +2,7 @@
 # Makefile to build the executive binary
 #
 
-OUTPUT=user-service
+OUTPUT=user
 
 .PHONY: build
 build:

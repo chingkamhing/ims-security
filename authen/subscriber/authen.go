@@ -5,7 +5,7 @@ import (
 
 	log "github.com/micro/go-micro/v2/logger"
 
-	authen "creapptive/go-micro/api/authen"
+	authen "creapptive.com/ims-security/api/authen"
 )
 
 type Authen struct{}

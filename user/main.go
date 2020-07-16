@@ -4,9 +4,9 @@ import (
 	"github.com/micro/go-micro/v2"
 	log "github.com/micro/go-micro/v2/logger"
 
-	user "creapptive/go-micro/api/user"
-	"creapptive/go-micro/user-service/handler"
-	"creapptive/go-micro/user-service/subscriber"
+	user "creapptive.com/ims-security/api/user"
+	"creapptive.com/ims-security/user/handler"
+	"creapptive.com/ims-security/user/subscriber"
 )
 
 func main() {

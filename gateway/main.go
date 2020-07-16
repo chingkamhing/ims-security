@@ -4,8 +4,8 @@ import (
 	"github.com/micro/go-micro/v2"
 	log "github.com/micro/go-micro/v2/logger"
 
-	gateway "creapptive/go-micro/api/gateway"
-	"creapptive/go-micro/gateway-service/handler"
+	gateway "creapptive.com/ims-security/api/gateway"
+	"creapptive.com/ims-security/gateway/handler"
 )
 
 func main() {

@@ -1,3 +1,3 @@
 FROM alpine
-ADD authen-service /authen-service
-ENTRYPOINT [ "/authen-service" ]
+ADD authen /authen
+ENTRYPOINT [ "/authen" ]

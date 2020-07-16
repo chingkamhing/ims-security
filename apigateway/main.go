@@ -12,7 +12,7 @@ import (
 	log "github.com/micro/go-micro/v2/logger"
 	"google.golang.org/grpc"
 
-	apigateway "creapptive/go-micro/api/apigateway"
+	apigateway "creapptive.com/ims-security/api/apigateway"
 )
 
 // the go.micro.srv.greeter address

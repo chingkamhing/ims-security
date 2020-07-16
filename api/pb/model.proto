@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package creapptive.model;
 
-option go_package = "creapptive/go-micro/api/model";
+option go_package = "creapptive.com/ims-security/api/model";
 
 message User {
     string id = 1;

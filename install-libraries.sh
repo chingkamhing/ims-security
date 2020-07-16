@@ -4,9 +4,9 @@
 # Script to install various go libraries. As micro project keep updating pretty frequently, it is very likely that the code is broken and vital to checkout a versioned snapshoot.
 #
 
-# the latest micro/go-micro is 2.9.0 as of 20200715
+# the latest micro/go-micro is 2.9.1 as of 20200715
 GOMICRO_VERSION=2.9.1
-# the latest micro/micro is 2.9.2 as of 20200715
+# the latest micro/micro is 2.9.3 as of 20200715
 MICRO_VERSION=2.9.3
 # either 0 argument
 NUM_ARGS=0

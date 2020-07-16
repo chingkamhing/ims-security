@@ -2,7 +2,7 @@
 # Makefile to build the executive binary
 #
 
-OUTPUT=gateway-service
+OUTPUT=gateway
 
 .PHONY: build
 build:

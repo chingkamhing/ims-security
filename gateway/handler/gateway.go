@@ -6,10 +6,10 @@ import (
 	"github.com/micro/go-micro/v2/client"
 	log "github.com/micro/go-micro/v2/logger"
 
-	authen "creapptive/go-micro/api/authen"
-	gateway "creapptive/go-micro/api/gateway"
-	message "creapptive/go-micro/api/message"
-	user "creapptive/go-micro/api/user"
+	authen "creapptive.com/ims-security/api/authen"
+	gateway "creapptive.com/ims-security/api/gateway"
+	message "creapptive.com/ims-security/api/message"
+	user "creapptive.com/ims-security/api/user"
 )
 
 const authenServiceName = "creapptive.service.authen"

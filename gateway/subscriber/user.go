@@ -5,7 +5,7 @@ import (
 
 	log "github.com/micro/go-micro/v2/logger"
 
-	apigateway "creapptive/go-micro/api/apigateway"
+	apigateway "creapptive.com/ims-security/api/apigateway"
 )
 
 type User struct{}

@@ -5,7 +5,7 @@ This is the User service
 Generated with
 
 ```
-micro new --namespace=creapptive --type=service user-service
+micro new --namespace=creapptive --type=service user
 ```
 
 * serve API endpoints in gRPC protocol

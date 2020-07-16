@@ -2,7 +2,7 @@
 # Makefile to build the executive binary
 #
 
-OUTPUT=authen-service
+OUTPUT=authen
 
 .PHONY: build
 build:
