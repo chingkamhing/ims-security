@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = /home/kamching/work/creapptive/repository/web/ims-security
+	branch = master
+	commit = b42cb98486df2b68ce0db0df0c4e4723b74c78f9
+	parent = ed9011a9456034e34e4372dc70da7a917aecf657
+	method = merge
+	cmdver = 0.4.1
