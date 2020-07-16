@@ -85,17 +85,17 @@ go get -u -v github.com/micro/protobuf/protoc-gen-go
 #         - further try with various tags of v1.3.0, v1.2.0, v1.1.0, and v1.0.0, found v1.0.0 has the least difference between original *.pb.go and *.pb.gw.go
 #
 # manually build github.com/golang/protobuf@v1.0.0 and "make install" of the project
-# * don't know how to check the version of protoc-gen-go, use file "protoc-gen-go.latest" as checker to determine if protoc-gen-go v1.0.0 is installed
+# * don't know how to check the version of protoc-gen-go, use file "protoc-gen-go.old" as checker to determine if protoc-gen-go v1.0.0 is installed
 #
 PROTOC_GEN_GO=$(which protoc-gen-go)
-PROTOC_GEN_GO_LATEST="${PROTOC_GEN_GO}.latest"
+PROTOC_GEN_GO_OLD="${PROTOC_GEN_GO}.old"
 PROTOC_GEN_GO_VERSION="v1.0.0"
 if [ "$PROTOC_GEN_GO" != "" ]; then
 	# github.com/golang/protobuf properly installed
-	if [ ! -f "$PROTOC_GEN_GO_LATEST" ]; then
-		# believe the latest of protoc-gen-go is not backup yet, save it now
-		echo "No $PROTOC_GEN_GO_LATEST. Install github.com/golang/protobuf v1.0.0 to fix gateway compile error."
-		mv $PROTOC_GEN_GO $PROTOC_GEN_GO_LATEST
+	if [ ! -f "$PROTOC_GEN_GO_OLD" ]; then
+		# believe the original protoc-gen-go is not backup yet, save it now
+		echo "No $PROTOC_GEN_GO_OLD. Install github.com/golang/protobuf v1.0.0 to fix gateway compile error."
+		mv $PROTOC_GEN_GO $PROTOC_GEN_GO_OLD
 		# checkout specify version tag of github.com/golang/protobuf and install the project
 		cd ${GOPATH}/src/github.com/golang/protobuf
 		git fetch --all --tags
@@ -104,7 +104,7 @@ if [ "$PROTOC_GEN_GO" != "" ]; then
 		cp $PROTOC_GEN_GO ${PROTOC_GEN_GO}.${PROTOC_GEN_GO_VERSION}
 		git checkout master
 		cd -
-		echo "protoc-gen-go is changed to $PROTOC_GEN_GO_VERSION and the original one is saved to $PROTOC_GEN_GO_LATEST."
+		echo "protoc-gen-go is changed to $PROTOC_GEN_GO_VERSION and the original one is saved to $PROTOC_GEN_GO_OLD."
 	else
 		echo "Believe protoc-gen-go $PROTOC_GEN_GO_VERSION installed properly. protoc-gen-go is not changed."
 	fi
