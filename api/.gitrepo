@@ -6,7 +6,7 @@
 [subrepo]
 	remote = ~/work/creapptive/repository/microservices/ims-security-api
 	branch = master
-	commit = 6fd58f69ac0a15e024436f587adaa4a7dd8b2414
-	parent = 6914365dcd8afdc6229cda271674e6f547748dd6
+	commit = 3466aff28a80d6c34246720b39cdd620a80c8185
+	parent = 758dae1a426f7ef811229fc5ff671c1e6a6d152a
 	method = merge
 	cmdver = 0.4.1
