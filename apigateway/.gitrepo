@@ -4,7 +4,7 @@
 ; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
 ;
 [subrepo]
-	remote = /home/kamching/work/creapptive/repository/microservices/apigateway
+	remote = ~/work/creapptive/repository/microservices/apigateway
 	branch = master
 	commit = c15244c12ee066225cd587b4b073c51f022f8d76
 	parent = 9115919333a413dce29a887fbd8b9e5199deb1b3
