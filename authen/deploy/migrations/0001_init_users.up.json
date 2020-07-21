@@ -1,0 +1,45 @@
+[
+    {
+        "create": "users",
+        "validator": {
+            "$jsonSchema": {
+                "bsonType": "object",
+                "required": ["_id", "username", "password"],
+                "properties": {
+                    "_id": {
+                        "bsonType": "objectId",
+                        "description": "This is a foreign key to point to the user in user service (note: must be provided upon every insert)"
+                    },
+                    "username": {
+                        "bsonType": "string",
+                        "description": "Login username which must be unique"
+                    },
+                    "password": {
+                        "bsonType": "binData",
+                        "minimum": 60,
+                        "maximum": 80,
+                        "description": "Hashed password"
+                    },
+                    "failAt": {
+                        "bsonType": "date",
+                        "description": "Initial login fail datetime. Be cleared upon successfull login."
+                    },
+                    "failCount": {
+                        "bsonType": "int",
+                        "description": "Consecutive login fail count"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "createIndexes": "users",
+        "indexes": [{
+            "key": {
+                "username": 1
+            },
+            "name": "users_indexes_created",
+            "unique": true
+        }]
+    }
+]
