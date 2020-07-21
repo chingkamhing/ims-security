@@ -111,14 +111,14 @@ func runUserAll(c *cli.Context) error {
 	repo := repository.New()
 	err := repo.Open()
 	if err != nil {
-		fmt.Errorf("Fail to open repository: %w\n", err)
+		return fmt.Errorf("Fail to open repository: %w\n", err)
 	}
 	defer repo.Close()
 
 	// list all users
 	users, err := repo.ReadAllUsers()
 	if err != nil {
-		fmt.Errorf("Fail to read users: %w\n", err)
+		return fmt.Errorf("Fail to read users: %w\n", err)
 	}
 	numUsers := len(users)
 	if numUsers <= 1 {
@@ -139,7 +139,7 @@ func runUserID(c *cli.Context) error {
 	repo := repository.New()
 	err := repo.Open()
 	if err != nil {
-		fmt.Errorf("Fail to open repository: %w\n", err)
+		return fmt.Errorf("Fail to open repository: %w\n", err)
 	}
 	defer repo.Close()
 
@@ -147,13 +147,13 @@ func runUserID(c *cli.Context) error {
 	idString := c.Args().Get(0)
 	id, err := primitive.ObjectIDFromHex(idString)
 	if err != nil {
-		fmt.Errorf("Fail to convert ID string to ObjectID: %w\n", err)
+		return fmt.Errorf("Fail to convert ID string to ObjectID: %w\n", err)
 	}
 
 	// list the user by it's ID
 	user, err := repo.ReadUserByID(id.Hex())
 	if err != nil {
-		fmt.Errorf("Fail to read user %q: %w\n", idString, err)
+		return fmt.Errorf("Fail to read user %q: %w\n", idString, err)
 	}
 	printUser(user)
 	return nil
@@ -166,7 +166,7 @@ func runUserUpdate(c *cli.Context) error {
 	repo := repository.New()
 	err := repo.Open()
 	if err != nil {
-		fmt.Errorf("Fail to open repository: %w\n", err)
+		return fmt.Errorf("Fail to open repository: %w\n", err)
 	}
 	defer repo.Close()
 
@@ -176,7 +176,7 @@ func runUserUpdate(c *cli.Context) error {
 		passwordString := c.Args().Get(1)
 		password, err := lib.HashPassword(passwordString, 0)
 		if err != nil {
-			fmt.Errorf("Fail to hash password: %w\n", err)
+			return fmt.Errorf("Fail to hash password: %w\n", err)
 		}
 		user = &authenModel.User{
 			Username: username,
@@ -187,7 +187,7 @@ func runUserUpdate(c *cli.Context) error {
 	// update the user with input's username
 	count, err := repo.UpdateUserByUsername(user)
 	if err != nil {
-		fmt.Errorf("Fail to update user: %w\n", err)
+		return fmt.Errorf("Fail to update user: %w\n", err)
 	}
 	if count == 1 {
 		fmt.Printf("Updated user %v successfully\n", user.Username)
@@ -204,7 +204,7 @@ func runUserUpdateByID(c *cli.Context) error {
 	repo := repository.New()
 	err := repo.Open()
 	if err != nil {
-		fmt.Errorf("Fail to open repository: %w\n", err)
+		return fmt.Errorf("Fail to open repository: %w\n", err)
 	}
 	defer repo.Close()
 
@@ -216,11 +216,11 @@ func runUserUpdateByID(c *cli.Context) error {
 		passwordString := c.Args().Get(2)
 		id, err := primitive.ObjectIDFromHex(idString)
 		if err != nil {
-			fmt.Errorf("Fail to convert ID string to ObjectID: %w\n", err)
+			return fmt.Errorf("Fail to convert ID string to ObjectID: %w\n", err)
 		}
 		password, err := lib.HashPassword(passwordString, hashCost)
 		if err != nil {
-			fmt.Errorf("Fail to hash password: %w\n", err)
+			return fmt.Errorf("Fail to hash password: %w\n", err)
 		}
 		user = &authenModel.User{
 			ID:       id,
@@ -232,7 +232,7 @@ func runUserUpdateByID(c *cli.Context) error {
 	// update the user with input's username
 	count, err := repo.UpdateUserByID(user)
 	if err != nil {
-		fmt.Errorf("Fail to update user: %w\n", err)
+		return fmt.Errorf("Fail to update user: %w\n", err)
 	}
 	if count == 1 {
 		fmt.Printf("Updated user %v successfully\n", user.ID)
@@ -249,7 +249,7 @@ func runUserDeleteByID(c *cli.Context) error {
 	repo := repository.New()
 	err := repo.Open()
 	if err != nil {
-		fmt.Errorf("Fail to open repository: %s\n", err)
+		return fmt.Errorf("Fail to open repository: %s\n", err)
 	}
 	defer repo.Close()
 
@@ -257,26 +257,26 @@ func runUserDeleteByID(c *cli.Context) error {
 	idString := c.Args().Get(0)
 	id, err := primitive.ObjectIDFromHex(idString)
 	if err != nil {
-		fmt.Errorf("Fail to convert ID string to ObjectID: %s\n", err)
+		return fmt.Errorf("Fail to convert ID string to ObjectID: %s\n", err)
 	}
 
 	// prompt the user to confirm first
 	var userInput string
 	user, err := repo.ReadUserByID(id.Hex())
 	if err != nil {
-		fmt.Errorf("Fail to read user %q: %s\n", idString, err)
+		return fmt.Errorf("Fail to read user %q: %s\n", idString, err)
 	}
 	fmt.Printf("Delete user %q.\n", user.Username)
 	fmt.Printf("Are you sure you want to delete %q [y/n]?\n", user.Username)
 	fmt.Scanln(&userInput)
 	if userInput != "y" {
-		fmt.Errorf("Aborted.")
+		return fmt.Errorf("Aborted")
 	}
 
 	// delete the user with input's ID
 	count, err := repo.DeleteUserByID(id.Hex())
 	if err != nil {
-		fmt.Errorf("Fail to delete user: %s\n", err)
+		return fmt.Errorf("Fail to delete user: %s\n", err)
 	}
 	if count == 1 {
 		fmt.Printf("Deleted user %s successfully\n", idString)
@@ -292,7 +292,7 @@ func runUserDeleteAll(c *cli.Context) error {
 	repo := repository.New()
 	err := repo.Open()
 	if err != nil {
-		fmt.Errorf("Fail to open repository: %w\n", err)
+		return fmt.Errorf("Fail to open repository: %w\n", err)
 	}
 	defer repo.Close()
 
@@ -302,13 +302,13 @@ func runUserDeleteAll(c *cli.Context) error {
 	fmt.Println("Are you sure you want to delete all the users [y/n]?")
 	fmt.Scanln(&userInput)
 	if userInput != "y" {
-		fmt.Errorf("Aborted")
+		return fmt.Errorf("Aborted")
 	}
 
 	// delete all users
 	count, err := repo.DeleteAllUsers()
 	if err != nil {
-		fmt.Errorf("Fail to delete all user: %w\n", err)
+		return fmt.Errorf("Fail to delete all user: %w\n", err)
 	}
 	fmt.Printf("Deleted number of users: %v\n", count)
 	return nil
