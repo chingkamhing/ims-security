@@ -6,7 +6,7 @@
 [subrepo]
 	remote = ~/work/creapptive/repository/microservices/gateway
 	branch = master
-	commit = 47308b201984bd64cd360e0e4daaffc55d9a5171
-	parent = 54ee688d3295c06d221dd8fa4af7bc742654b60b
+	commit = ebc192bbb4c161e1562f71072e2000cecc8b086e
+	parent = 1f7ffd7b5a599f4ae067eb29ad878077c36618ea
 	method = merge
 	cmdver = 0.4.1
