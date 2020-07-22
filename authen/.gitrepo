@@ -6,7 +6,7 @@
 [subrepo]
 	remote = ~/work/creapptive/repository/microservices/authen
 	branch = master
-	commit = 2c15289aff3f1d016f69941b5435fdaa1ff1956d
-	parent = 8e98f0da7ba84be47462bdc285c1515833606253
+	commit = 25f3b0f5cdf28fb28916d9e3d57c6b4f3d8de95e
+	parent = 9b4d3e19802775fde5bdb1924259d0729c0376e3
 	method = merge
 	cmdver = 0.4.1
