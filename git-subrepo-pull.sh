@@ -47,10 +47,10 @@ if [ "$IS_SYNC_ALL" = false ] && [ "$#" -lt "$NUM_ARGS" ]; then
 fi
 
 if [ "$IS_SYNC_ALL" = true ]; then
-	echo "git-subrepo pull to all..."
+	echo "git-subrepo pull from all..."
     git-subrepo pull --all
 else
-	echo "git-subrepo pull to $SUBREPO_DIRS..."
+	echo "git-subrepo pull from $SUBREPO_DIRS..."
 	dirs=($SUBREPO_DIRS)
 	for dir in "${dirs[@]}"; do
 		subrepo_dir=$(basename $dir)
