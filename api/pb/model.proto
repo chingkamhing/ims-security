@@ -47,7 +47,7 @@ message ScopeNode {
 
 message ChangeVersion {
     string user = 1;
-    string PrivilegeProfile = 2;
-    string Location = 3;
-    string Scope = 4;
+    string privilegeProfile = 2;
+    string location = 3;
+    string scope = 4;
 }

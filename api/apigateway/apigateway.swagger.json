@@ -1032,13 +1032,13 @@
         "user": {
           "type": "string"
         },
-        "PrivilegeProfile": {
+        "privilegeProfile": {
           "type": "string"
         },
-        "Location": {
+        "location": {
           "type": "string"
         },
-        "Scope": {
+        "scope": {
           "type": "string"
         }
       }
