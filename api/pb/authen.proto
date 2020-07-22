@@ -17,9 +17,9 @@ message AuthenLoginReply {
 
 message AuthUser {
     string id = 1;
-    string Username = 2;
-    string FailAt = 3;
-    string FailCount = 4;
+    string username = 2;
+    string failAt = 3;
+    string failCount = 4;
 }
 
 // async interface definitions
