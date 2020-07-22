@@ -5,6 +5,7 @@ import (
 
 	log "github.com/micro/go-micro/v2/logger"
 
+	authen "creapptive.com/ims-security/api/authen"
 	"creapptive.com/ims-security/api/message"
 	"creapptive.com/ims-security/authen/repository"
 )
@@ -33,7 +34,7 @@ func (a *Authen) Close() error {
 }
 
 // Login is a single request handler called via client.Call or the generated client code
-func (a *Authen) Login(ctx context.Context, req *message.LoginRequest, rsp *message.LoginReply) error {
+func (a *Authen) Login(ctx context.Context, req *message.LoginRequest, rsp *authen.AuthenLoginReply) error {
 	log.Info("Received Authen.Login request")
 	return nil
 }

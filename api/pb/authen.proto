@@ -5,9 +5,21 @@ package creapptive.api;
 import "message.proto";
 
 service Authen {
-    rpc Login(message.LoginRequest) returns (message.LoginReply) {}
+    rpc Login(message.LoginRequest) returns (AuthenLoginReply) {}
     rpc ChangePassword(message.ChangePasswordRequest) returns (message.ChangePasswordReply) {}
     rpc ResetPassword(message.ResetPasswordRequest) returns (message.ResetPasswordReply) {}
+}
+
+message AuthenLoginReply {
+    AuthUser data = 1;                  // response with data of AuthUser
+    string error = 2;
+}
+
+message AuthUser {
+    string id = 1;
+    string Username = 2;
+    string FailAt = 3;
+    string FailCount = 4;
 }
 
 // async interface definitions

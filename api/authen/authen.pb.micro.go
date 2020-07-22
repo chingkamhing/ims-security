@@ -43,7 +43,7 @@ func NewAuthenEndpoints() []*api.Endpoint {
 // Client API for Authen service
 
 type AuthenService interface {
-	Login(ctx context.Context, in *message.LoginRequest, opts ...client.CallOption) (*message.LoginReply, error)
+	Login(ctx context.Context, in *message.LoginRequest, opts ...client.CallOption) (*AuthenLoginReply, error)
 	ChangePassword(ctx context.Context, in *message.ChangePasswordRequest, opts ...client.CallOption) (*message.ChangePasswordReply, error)
 	ResetPassword(ctx context.Context, in *message.ResetPasswordRequest, opts ...client.CallOption) (*message.ResetPasswordReply, error)
 }
@@ -60,9 +60,9 @@ func NewAuthenService(name string, c client.Client) AuthenService {
 	}
 }
 
-func (c *authenService) Login(ctx context.Context, in *message.LoginRequest, opts ...client.CallOption) (*message.LoginReply, error) {
+func (c *authenService) Login(ctx context.Context, in *message.LoginRequest, opts ...client.CallOption) (*AuthenLoginReply, error) {
 	req := c.c.NewRequest(c.name, "Authen.Login", in)
-	out := new(message.LoginReply)
+	out := new(AuthenLoginReply)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -93,14 +93,14 @@ func (c *authenService) ResetPassword(ctx context.Context, in *message.ResetPass
 // Server API for Authen service
 
 type AuthenHandler interface {
-	Login(context.Context, *message.LoginRequest, *message.LoginReply) error
+	Login(context.Context, *message.LoginRequest, *AuthenLoginReply) error
 	ChangePassword(context.Context, *message.ChangePasswordRequest, *message.ChangePasswordReply) error
 	ResetPassword(context.Context, *message.ResetPasswordRequest, *message.ResetPasswordReply) error
 }
 
 func RegisterAuthenHandler(s server.Server, hdlr AuthenHandler, opts ...server.HandlerOption) error {
 	type authen interface {
-		Login(ctx context.Context, in *message.LoginRequest, out *message.LoginReply) error
+		Login(ctx context.Context, in *message.LoginRequest, out *AuthenLoginReply) error
 		ChangePassword(ctx context.Context, in *message.ChangePasswordRequest, out *message.ChangePasswordReply) error
 		ResetPassword(ctx context.Context, in *message.ResetPasswordRequest, out *message.ResetPasswordReply) error
 	}
@@ -115,7 +115,7 @@ type authenHandler struct {
 	AuthenHandler
 }
 
-func (h *authenHandler) Login(ctx context.Context, in *message.LoginRequest, out *message.LoginReply) error {
+func (h *authenHandler) Login(ctx context.Context, in *message.LoginRequest, out *AuthenLoginReply) error {
 	return h.AuthenHandler.Login(ctx, in, out)
 }
 
