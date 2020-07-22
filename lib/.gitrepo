@@ -6,7 +6,7 @@
 [subrepo]
 	remote = /home/kamching/work/creapptive/repository/microservices/lib
 	branch = master
-	commit = 0cae4e320237d2afd4fa37f187246e7a062163a2
-	parent = 89ab9579621519f950b01242cf6b110e5d527508
+	commit = 8b1ea7568187d353a950e5ae8c77da890992ca2d
+	parent = f8505e2c107958054b7d1c1fe0fab560536e3356
 	method = merge
 	cmdver = 0.4.1
