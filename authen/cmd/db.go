@@ -53,9 +53,8 @@ func runDatabaseConnect(c *cli.Context) error {
 	return nil
 }
 
-// list all user
+// migrate database up
 func runDatabaseMigrateUp(c *cli.Context) error {
-	// default "new" command
 	repo := repository.New()
 	err := repo.Open()
 	if err != nil {
@@ -83,9 +82,8 @@ func runDatabaseMigrateUp(c *cli.Context) error {
 	return nil
 }
 
-// show user detail with specified id
+// migrate database up
 func runDatabaseMigrateDown(c *cli.Context) error {
-	// default "new" command
 	repo := repository.New()
 	err := repo.Open()
 	if err != nil {
