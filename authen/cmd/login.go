@@ -70,7 +70,7 @@ func runLogin(c *cli.Context) error {
 	if err != nil {
 		return fmt.Errorf("Fail to login: %w\n", err)
 	}
-	fmt.Printf("Successfully login user %v: %+v\n", login.Username, response)
+	fmt.Printf("Successfully login user %v:\n%+v\n", login.Username, response.Data)
 	return nil
 }
 
@@ -104,14 +104,13 @@ func runLoginChange(c *cli.Context) error {
 	service := micro.NewService(
 		micro.Name(serviceName + ".client"),
 	)
-	client := service.Client()
-	req := client.NewRequest(serviceName, "Authen.ChangePassword", changePassword)
+	api := authen.NewAuthenService(serviceName, service.Client())
 	ctx := metadata.NewContext(context.Background(), map[string]string{})
-	rsp := &message.ChangePasswordReply{}
-	if err := client.Call(ctx, req, rsp); err != nil {
+	response, err := api.ChangePassword(ctx, changePassword)
+	if err != nil {
 		return fmt.Errorf("Fail to change password: %w\n", err)
 	}
-	fmt.Printf("Successfully change user %q password\n", rsp.Data)
+	fmt.Printf("Successfully change user %q password\n", response.Data)
 	return nil
 }
 
@@ -125,37 +124,36 @@ func runLoginReset(c *cli.Context) error {
 	defer repo.Close()
 
 	// get input arguments
-	var resetID message.ResetPasswordRequest
+	var resetPassword message.ResetPasswordRequest
 	{
 		idString := c.Args().Get(0)
 		id, err := primitive.ObjectIDFromHex(idString)
 		if err != nil {
 			return fmt.Errorf("Fail to convert ID string to ObjectID: %w\n", err)
 		}
-		resetID.Id = id.Hex()
+		resetPassword.Id = id.Hex()
 	}
 
 	// prompt the user to confirm first
 	var userInput string
-	fmt.Printf("Reset user %q password to default.\n", resetID)
+	fmt.Printf("Reset user %q password to default.\n", resetPassword)
 	fmt.Println("Are you sure you want to reset the user's password [y/n]?")
 	fmt.Scanln(&userInput)
 	if userInput != "y" {
-		return fmt.Errorf("Aborted.")
+		return fmt.Errorf("Aborted")
 	}
 
 	// perform client Authen.ResetPassword()
 	service := micro.NewService(
 		micro.Name(serviceName + ".client"),
 	)
-	client := service.Client()
-	req := client.NewRequest(serviceName, "Authen.ResetPassword", resetID)
+	api := authen.NewAuthenService(serviceName, service.Client())
 	ctx := metadata.NewContext(context.Background(), map[string]string{})
-	rsp := &message.ResetPasswordReply{}
-	if err := client.Call(ctx, req, rsp); err != nil {
+	response, err := api.ResetPassword(ctx, &resetPassword)
+	if err != nil {
 		return fmt.Errorf("Fail to reset password: %w\n", err)
 	}
-	fmt.Printf("Successfully reset user %q password\n", rsp.Data)
+	fmt.Printf("Successfully reset user %q password\n", response.Data)
 	return nil
 }
 
