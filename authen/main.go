@@ -16,7 +16,7 @@ import (
 const serviceName = "creapptive.service.authen"
 
 // this microservice version
-const serviceVersion = "latest"
+var serviceVersion = cmd.Version()
 
 // this microservice subscriber topic name
 const subscriberName = serviceName

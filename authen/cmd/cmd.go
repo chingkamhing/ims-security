@@ -28,6 +28,10 @@ func Execute(a cli.Args, name string) error {
 	return fmt.Errorf("")
 }
 
+func Version() string {
+	return version
+}
+
 func addCommand(cmd *cli.Command) {
 	commands = append(commands, cmd)
 }
