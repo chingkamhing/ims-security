@@ -7,9 +7,13 @@ import (
 	"github.com/micro/cli/v2"
 )
 
+// this service's name
+var serviceName string
+
 var commands []*cli.Command
 
-func Execute(a cli.Args) error {
+func Execute(a cli.Args, name string) error {
+	serviceName = name
 	app := &cli.App{
 		Commands: commands,
 		CommandNotFound: func(c *cli.Context, cmd string) {

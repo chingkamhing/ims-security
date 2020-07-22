@@ -60,7 +60,7 @@ func main() {
 			// check if any command
 			args := c.Args()
 			if args.Present() {
-				err := cmd.Execute(args)
+				err := cmd.Execute(args, serviceName)
 				if err != nil {
 					return err
 				}
