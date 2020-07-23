@@ -15,8 +15,8 @@ import (
 	apigateway "creapptive.com/ims-security/api/apigateway"
 )
 
-// the go.micro.srv.greeter address
-var endpoint = flag.String("endpoint", "localhost:9090", "creapptive.service.gateway address")
+// the creapptive.service.apigateway address
+var endpoint = flag.String("endpoint", "localhost:9090", "creapptive.service.apigateway address")
 
 // grpc client middleware that log each grpc client unary call
 // reference: https://medium.com/@shijuvar/writing-grpc-interceptors-in-go-bf3e7671fe48
@@ -26,7 +26,7 @@ func logUnaryMiddleware(ctx context.Context, method string, req interface{}, rep
 	// Calls the invoker to execute RPC
 	err := invoker(ctx, method, req, reply, cc, opts...)
 	// Logic after invoking the invoker
-	log.Infof("Invoked RPC method=%s; Duration=%s; Error=%v", method, time.Since(start), err)
+	log.Infof("method=%s; took=%s; err=%v", method, time.Since(start), err)
 	return err
 }
 
