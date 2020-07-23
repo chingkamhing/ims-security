@@ -4,6 +4,8 @@ package creapptive.api;
 
 import "message.proto";
 
+option go_package = "creapptive.com/ims-security/api/user";
+
 service User {
     rpc CreateUser(message.CreateUserRequest) returns (message.CreateUserReply) {}
     rpc GetUsers(message.GetUsersRequest) returns (message.GetUsersReply) {}

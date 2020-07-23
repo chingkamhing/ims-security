@@ -4,6 +4,8 @@ package creapptive.api;
 
 import "message.proto";
 
+option go_package = "creapptive.com/ims-security/api/authen";
+
 service Authen {
     rpc Login(message.LoginRequest) returns (AuthenLoginReply) {}
     rpc ChangePassword(message.ChangePasswordRequest) returns (message.ChangePasswordReply) {}

@@ -2,11 +2,11 @@
 // source: apigateway.proto
 
 /*
-Package creapptive_api is a reverse proxy.
+Package apigateway is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package creapptive_api
+package apigateway
 
 import (
 	"context"
