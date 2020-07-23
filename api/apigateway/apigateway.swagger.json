@@ -1081,7 +1081,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "title": "@inject_tag: bson:\"_id,omitempty\""
         },
         "name": {
           "type": "string"
@@ -1124,7 +1125,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "title": "@inject_tag: bson:\"_id,omitempty\""
         },
         "locationIDs": {
           "type": "array",

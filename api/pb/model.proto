@@ -4,7 +4,13 @@ package creapptive.model;
 
 option go_package = "creapptive.com/ims-security/api/model";
 
+//
+// Note:
+// * use [protoc-go-inject-tag](https://github.com/favadi/protoc-go-inject-tag) to insert bson "_id" tags
+//
+
 message User {
+    // @inject_tag: bson:"_id,omitempty"
     string id = 1;
     repeated string locationIDs = 2;
     string scopeID = 3;
@@ -23,6 +29,7 @@ message Myself {
 }
 
 message PrivilegeProfile {
+    // @inject_tag: bson:"_id,omitempty"
     string id = 1;
     string name = 2;
     string description = 3;

@@ -6,6 +6,11 @@ import "message.proto";
 
 option go_package = "creapptive.com/ims-security/api/authen";
 
+//
+// Note:
+// * use [protoc-go-inject-tag](https://github.com/favadi/protoc-go-inject-tag) to insert bson "_id" tags
+//
+
 service Authen {
     rpc Login(message.LoginRequest) returns (AuthenLoginReply) {}
     rpc ChangePassword(message.ChangePasswordRequest) returns (message.ChangePasswordReply) {}
@@ -18,6 +23,7 @@ message AuthenLoginReply {
 }
 
 message AuthUser {
+    // @inject_tag: bson:"_id,omitempty"
     string id = 1;
     string username = 2;
     string failAt = 3;

@@ -33,7 +33,8 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type User struct {
-	Id                 string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// @inject_tag: bson:"_id,omitempty"
+	Id                 string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty" bson:"_id,omitempty"`
 	LocationIDs        []string `protobuf:"bytes,2,rep,name=locationIDs" json:"locationIDs,omitempty"`
 	ScopeID            string   `protobuf:"bytes,3,opt,name=scopeID" json:"scopeID,omitempty"`
 	PrivilegeProfileID string   `protobuf:"bytes,4,opt,name=privilegeProfileID" json:"privilegeProfileID,omitempty"`
@@ -145,7 +146,8 @@ func (m *Myself) GetPrivilegeProfile() *PrivilegeProfile {
 }
 
 type PrivilegeProfile struct {
-	Id          string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// @inject_tag: bson:"_id,omitempty"
+	Id          string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty" bson:"_id,omitempty"`
 	Name        string   `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
 	Description string   `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
 	Privileges  []string `protobuf:"bytes,4,rep,name=privileges" json:"privileges,omitempty"`

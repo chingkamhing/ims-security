@@ -55,7 +55,8 @@ func (m *AuthenLoginReply) GetError() string {
 }
 
 type AuthUser struct {
-	Id        string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// @inject_tag: bson:"_id,omitempty"
+	Id        string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty" bson:"_id,omitempty"`
 	Username  string `protobuf:"bytes,2,opt,name=username" json:"username,omitempty"`
 	FailAt    string `protobuf:"bytes,3,opt,name=failAt" json:"failAt,omitempty"`
 	FailCount string `protobuf:"bytes,4,opt,name=failCount" json:"failCount,omitempty"`

@@ -20,6 +20,7 @@ all: proto
 proto:
 	# model
 	protoc -I=./api/pb --micro_out=${MODIFY},paths=source_relative:${PROTO_DIR}/model --go_out=${MODIFY}:${PROTO_DIR}/model model.proto && \
+		protoc-go-inject-tag -input=${PROTO_DIR}/model/creapptive.com/ims-security/api/model/model.pb.go && \
 		mv -f ${PROTO_DIR}/model/creapptive.com/ims-security/api/model/* ${PROTO_DIR}/model/ && \
 		rm -rf ${PROTO_DIR}/model/creapptive.com
 	# message
@@ -38,6 +39,7 @@ proto:
 		rm -rf ${PROTO_DIR}/gateway/creapptive.com
 	# authen
 	protoc -I=./api/pb -I=${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --micro_out=${MODIFY},paths=source_relative:${PROTO_DIR}/authen --go_out=${MODIFY}:${PROTO_DIR}/authen authen.proto && \
+		protoc-go-inject-tag -input=${PROTO_DIR}/authen/creapptive.com/ims-security/api/authen/authen.pb.go && \
 		mv -f ${PROTO_DIR}/authen/creapptive.com/ims-security/api/authen/* ${PROTO_DIR}/authen/ && \
 		rm -rf ${PROTO_DIR}/authen/creapptive.com
 	# user
