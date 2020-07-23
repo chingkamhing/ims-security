@@ -1,0 +1,95 @@
+[
+    {
+        "createIndexes": "privilegeProfiles",
+        "indexes": [{
+            "key": {
+                "name": 1
+            },
+            "name": "privilegeProfiles_indexes_created",
+            "unique": true
+        }]
+    },
+    {
+        "insert": "privilegeProfiles",
+        "documents": [
+            {
+                "name": "god",
+                "description": "Description: god level privilege profile",
+                "privileges": [
+                    "GET_USER",
+                    "CREATE_USER",
+                    "GET_ACCESS_RESOURCES",
+                    "GET_MANAGEMENT_RESOURCES",
+                    "CREATE_ACCESS_RESOURCES",
+                    "CREATE_MANAGEMENT_RESOURCES",
+                    "PROGRAM_ACCESS_RESOURCES",
+                    "PROGRAM_MANAGEMENT_RESOURCES",
+                    "ACTIVITY_LOCK_ACCESS",
+                    "ACTIVITY_LOCK_OPERATION",
+                    "ACTIVITY_SYSTEM",
+                    "SYSTEM_CONFIG"
+                ]
+            },
+            {
+                "name": "admin",
+                "description": "Description: admin level privilege profile",
+                "privileges": [
+                    "GET_USER",
+                    "CREATE_USER",
+                    "GET_ACCESS_RESOURCES",
+                    "GET_MANAGEMENT_RESOURCES",
+                    "CREATE_ACCESS_RESOURCES",
+                    "CREATE_MANAGEMENT_RESOURCES",
+                    "PROGRAM_ACCESS_RESOURCES",
+                    "PROGRAM_MANAGEMENT_RESOURCES",
+                    "ACTIVITY_LOCK_ACCESS",
+                    "ACTIVITY_LOCK_OPERATION"
+                ]
+            },
+            {
+                "name": "programmer",
+                "description": "Description: programmer level privilege profile",
+                "privileges": [
+                    "GET_USER",
+                    "GET_ACCESS_RESOURCES",
+                    "GET_MANAGEMENT_RESOURCES",
+                    "PROGRAM_ACCESS_RESOURCES",
+                    "PROGRAM_MANAGEMENT_RESOURCES",
+                    "ACTIVITY_LOCK_ACCESS",
+                    "ACTIVITY_LOCK_OPERATION"
+                ]
+            },
+            {
+                "name": "security guard",
+                "description": "Description: security guard level privilege profile",
+                "privileges": [
+                    "GET_USER",
+                    "GET_ACCESS_RESOURCES",
+                    "GET_MANAGEMENT_RESOURCES",
+                    "PROGRAM_ACCESS_RESOURCES",
+                    "ACTIVITY_LOCK_ACCESS",
+                    "ACTIVITY_LOCK_OPERATION"
+                ]
+            },
+            {
+                "name": "reader",
+                "description": "Description: reader level privilege profile",
+                "privileges": [
+                    "GET_USER",
+                    "GET_ACCESS_RESOURCES",
+                    "GET_MANAGEMENT_RESOURCES",
+                    "ACTIVITY_LOCK_ACCESS"
+                ]
+            },
+            {
+                "name": "technician",
+                "description": "Description: technician level privilege profile",
+                "privileges": [
+                    "ACTIVITY_LOCK_ACCESS",
+                    "ACTIVITY_LOCK_OPERATION",
+                    "ACTIVITY_SYSTEM"
+                ]
+            }
+        ]
+    }
+]

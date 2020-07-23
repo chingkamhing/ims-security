@@ -1,0 +1,12 @@
+[
+    {
+        "createIndexes": "users",
+        "indexes": [{
+            "key": {
+                "username": 1
+            },
+            "name": "users_indexes_created",
+            "unique": true
+        }]
+    }
+]

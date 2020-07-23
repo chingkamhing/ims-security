@@ -1,0 +1,12 @@
+[
+    {
+        "dropIndexes": "locations",
+        "index": "locations_indexes_created"
+    },
+    {
+        "delete": "locations",
+        "deletes": [
+            { "q" : { "name": "root" }, "limit": 0 }
+        ]
+    }
+]

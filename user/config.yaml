@@ -1,0 +1,27 @@
+# IMS Security Management System user service config file
+---
+# individual service settings
+service:
+    user:
+        endpoint: "/api"                        # service base endpoint (note: must begin with '/')
+        database:
+            dbname: "imsSecurityUserDB"         # database name
+            host: "127.0.0.1"                   # database host address
+            port: 27017                         # database port number
+            user: ""                            # database user name (note: NEVER save user name here, should pass it through environment variable)
+            password: ""                        # database password (note: NEVER save password here, should pass it through environment variable)
+
+# global settings
+setting:
+    database:
+        retry_count: 20                         # database retry connecting database count
+        retry_interval: 3                       # database retry connecting database base interval in second; interval time = 1-based retry index * interval
+        migration_path: "deploy/migrations"     # define the database migration directory path name
+        migration_table: "schema_migrations"    # migration table name (note: migrate's default collection name is "schema_migrations", better follow it)
+
+# log settings
+log:
+    console: true                               # enable/disable log output to console
+    file: ""                                    # log output file
+    level: "info"                               # log levels: debug, info, error
+

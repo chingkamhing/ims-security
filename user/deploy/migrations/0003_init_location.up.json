@@ -1,0 +1,21 @@
+[
+    {
+        "createIndexes": "locations",
+        "indexes": [{
+            "key": {
+                "name": 1
+            },
+            "name": "locations_indexes_created",
+            "unique": true
+        }]
+    },
+    {
+        "insert": "locations",
+        "documents": [
+            {
+                "name": "root",
+                "description": "Description: root location"
+            }
+        ]
+    }
+]

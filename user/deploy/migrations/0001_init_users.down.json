@@ -1,0 +1,6 @@
+[
+    {
+        "dropIndexes": "users",
+        "index": "users_indexes_created"
+    }
+]

@@ -1,0 +1,21 @@
+[
+    {
+        "createIndexes": "scopes",
+        "indexes": [{
+            "key": {
+                "name": 1
+            },
+            "name": "scopes_indexes_created",
+            "unique": true
+        }]
+    },
+    {
+        "insert": "scopes",
+        "documents": [
+            {
+                "name": "root",
+                "description": "Description: root scope"
+            }
+        ]
+    }
+]

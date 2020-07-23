@@ -1,0 +1,12 @@
+[
+    {
+        "dropIndexes": "scopes",
+        "index": "scopes_indexes_created"
+    },
+    {
+        "delete": "scopes",
+        "deletes": [
+            { "q" : { "name": "root" }, "limit": 0 }
+        ]
+    }
+]

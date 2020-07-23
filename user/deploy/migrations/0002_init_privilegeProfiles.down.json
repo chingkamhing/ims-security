@@ -1,0 +1,17 @@
+[
+    {
+        "dropIndexes": "privilegeProfiles",
+        "index": "privilegeProfiles_indexes_created"
+    },
+    {
+        "delete": "privilegeProfiles",
+        "deletes": [
+            { "q" : { "name": "god" }, "limit": 1 },
+            { "q" : { "name": "admin" }, "limit": 1 },
+            { "q" : { "name": "programmer" }, "limit": 1 },
+            { "q" : { "name": "security guard" }, "limit": 1 },
+            { "q" : { "name": "reader" }, "limit": 1 },
+            { "q" : { "name": "technician" }, "limit": 1 }
+        ]
+    }
+]
