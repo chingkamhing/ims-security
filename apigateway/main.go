@@ -15,8 +15,9 @@ import (
 	apigateway "creapptive.com/ims-security/api/apigateway"
 )
 
-// the creapptive.service.apigateway address
-var endpoint = flag.String("endpoint", "localhost:9090", "creapptive.service.apigateway address")
+// the creapptive.service.gateway address
+var endpoint = flag.String("endpoint", "localhost:9090", "creapptive.service.gateway address")
+var httpUrl = flag.String("http", "localhost:8080", "HTTP listen url")
 
 // grpc client middleware that log each grpc client unary call
 // reference: https://medium.com/@shijuvar/writing-grpc-interceptors-in-go-bf3e7671fe48
@@ -45,7 +46,8 @@ func run() error {
 		return err
 	}
 
-	return http.ListenAndServe(":8080", mux)
+	log.Infof("apigateway listening at %v", *httpUrl)
+	return http.ListenAndServe(*httpUrl, mux)
 }
 
 func main() {
