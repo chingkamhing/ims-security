@@ -6,8 +6,6 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/golang/glog"
-	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	log "github.com/micro/go-micro/v2/logger"
 	"google.golang.org/grpc"
@@ -39,7 +37,7 @@ func run() error {
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{
 		grpc.WithInsecure(),
-		grpc.WithUnaryInterceptor(grpc_middleware.ChainUnaryClient(logUnaryMiddleware)),
+		grpc.WithUnaryInterceptor(logUnaryMiddleware),
 	}
 	err := apigateway.RegisterApigatewayHandlerFromEndpoint(ctx, mux, *endpoint, opts)
 	if err != nil {
@@ -53,9 +51,7 @@ func run() error {
 func main() {
 	flag.Parse()
 
-	defer glog.Flush()
-
 	if err := run(); err != nil {
-		glog.Fatal(err)
+		log.Fatal(err)
 	}
 }
