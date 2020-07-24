@@ -180,3 +180,9 @@ message ChangeVersionReply {
     string error = 2;
 }
 
+// event message definition
+
+message TopicAllMessage {
+    string event = 1;
+    string data = 2;
+}

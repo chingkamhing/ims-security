@@ -19,7 +19,7 @@ const serviceName = "creapptive.service.user"
 var serviceVersion = cmd.Version()
 
 // this microservice subscriber topic name
-const subscriberName = serviceName
+const topicAll = "topic.all"
 
 // default config filename
 const configFilename = "config.yaml"
@@ -74,7 +74,7 @@ func main() {
 	service.Init()
 
 	// Register Handler
-	handler := handler.NewUser()
+	handler := handler.NewUser(service.Client(), topicAll)
 	err := handler.Open()
 	if err != nil {
 		log.Fatal(err)
@@ -83,7 +83,7 @@ func main() {
 	user.RegisterUserHandler(service.Server(), handler)
 
 	// Register Struct as Subscriber
-	micro.RegisterSubscriber(subscriberName, service.Server(), new(subscriber.User))
+	micro.RegisterSubscriber(topicAll, service.Server(), new(subscriber.User))
 
 	// Run service
 	if err := service.Run(); err != nil {

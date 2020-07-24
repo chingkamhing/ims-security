@@ -13,6 +13,13 @@ import (
 // this microservice name
 const serviceName = "creapptive.service.gateway"
 
+// other services' name
+var serviceNameMap = map[string]string{
+	"authen":   "creapptive.service.authen",
+	"hardware": "creapptive.service.hardware",
+	"user":     "creapptive.service.user",
+}
+
 // this microservice version
 var serviceVersion = cmd.Version()
 
@@ -38,7 +45,8 @@ func main() {
 	service.Init()
 
 	// Register Handler
-	gateway.RegisterApigatewayHandler(service.Server(), handler.New(service.Client()))
+	handler := handler.New(service.Client(), serviceNameMap)
+	gateway.RegisterApigatewayHandler(service.Server(), handler)
 
 	// Run service
 	if err := service.Run(); err != nil {

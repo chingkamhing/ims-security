@@ -19,7 +19,7 @@ const serviceName = "creapptive.service.authen"
 var serviceVersion = cmd.Version()
 
 // this microservice subscriber topic name
-const subscriberName = serviceName
+const topicAll = "topic.all"
 
 // default config filename
 const configFilename = "config.yaml"
@@ -73,16 +73,22 @@ func main() {
 	service.Init()
 
 	// Register Handler
-	handler := handler.NewAuthen()
-	err := handler.Open()
+	handlerAuthen := handler.NewAuthen()
+	err := handlerAuthen.Open()
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer handler.Close()
-	authen.RegisterAuthenHandler(service.Server(), handler)
+	defer handlerAuthen.Close()
+	authen.RegisterAuthenHandler(service.Server(), handlerAuthen)
 
 	// Register Struct as Subscriber
-	micro.RegisterSubscriber(subscriberName, service.Server(), new(subscriber.Authen))
+	subscriberToAllEvent := subscriber.NewAllEvent()
+	err = subscriberToAllEvent.Open()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer subscriberToAllEvent.Close()
+	micro.RegisterSubscriber(topicAll, service.Server(), subscriberToAllEvent)
 
 	// Run service
 	err = service.Run()

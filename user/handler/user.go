@@ -2,7 +2,10 @@ package handler
 
 import (
 	"context"
+	"encoding/json"
 
+	"github.com/micro/go-micro/v2"
+	"github.com/micro/go-micro/v2/client"
 	log "github.com/micro/go-micro/v2/logger"
 
 	message "creapptive.com/ims-security/api/message"
@@ -10,13 +13,15 @@ import (
 )
 
 type User struct {
-	repo repository.Interface
+	repo       repository.Interface
+	publishAll micro.Publisher
 }
 
 // NewUser create authen handler context
-func NewUser() *User {
+func NewUser(client client.Client, topic string) *User {
 	return &User{
-		repo: repository.NewWithMigrateUp(),
+		repo:       repository.NewWithMigrateUp(),
+		publishAll: micro.NewPublisher(topic, client),
 	}
 }
 
@@ -33,8 +38,28 @@ func (u *User) Close() error {
 }
 
 // CreateUser is a single request handler called via client.Call or the generated client code
-func (u *User) CreateUser(ctx context.Context, req *message.CreateUserRequest, rsp *message.CreateUserReply) error {
-	log.Info("Received User.CreateUser request")
+func (u *User) CreateUser(ctx context.Context, req *message.CreateUserRequest, rsp *message.CreateUserReply) (err error) {
+	log.Infof("CreateUser: %+v", req.User)
+	id, err := u.repo.CreateUser(req.User)
+	if err != nil {
+		return err
+	}
+	// success, response data with the user info plus the created id
+	rsp.Data = req.User
+	rsp.Data.Id = id
+	// send event message to all
+	msgBlob, err := json.Marshal(rsp.Data)
+	if err != nil {
+		return err
+	}
+	err = u.publishAll.Publish(context.TODO(), &message.TopicAllMessage{
+		Event: "CreateUser",
+		Data:  string(msgBlob),
+	})
+	if err != nil {
+		return err
+	}
+	log.Infof("Received User.CreateUser: created user %v", id)
 	return nil
 }
 
