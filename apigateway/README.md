@@ -6,6 +6,7 @@
 * please refer [GRPC Gateway](https://m3o.com/docs/grpc-gateway.html#running-the-example) for instructions
 * the endpoint is defined in api/pb/apigateway.proto, api/pb/message.proto and api/pb/model.proto
 * add middleware to log all endpoints
+* may refer this [go-grpc-gateway](https://github.com/alextanhongpin/go-grpc-gateway) on how to add file server on top of grpc gateway
 
 ## Limitations
 * note: the limitation is copied from [GRPC Gateway](https://m3o.com/docs/grpc-gateway.html#running-the-example)
