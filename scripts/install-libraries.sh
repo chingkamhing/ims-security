@@ -53,6 +53,7 @@ go get -u -v github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 go get -u -v github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 go get -u -v github.com/golang/protobuf
 go get -u -v github.com/micro/protobuf/protoc-gen-go
+go get -u -v github.com/favadi/protoc-go-inject-tag
 
 #
 # Note:
