@@ -83,12 +83,15 @@ func main() {
 
 	// Register Struct as Subscriber
 	subscriberToAllEvent := subscriber.NewAllEvent()
-	err = subscriberToAllEvent.Open()
+	err = subscriberToAllEvent.Open(nil, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer subscriberToAllEvent.Close()
-	micro.RegisterSubscriber(topicAll, service.Server(), subscriberToAllEvent)
+	defer subscriberToAllEvent.Close(nil, nil)
+	err = micro.RegisterSubscriber(topicAll, service.Server(), subscriberToAllEvent)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// Run service
 	err = service.Run()

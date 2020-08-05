@@ -83,7 +83,10 @@ func main() {
 	user.RegisterUserHandler(service.Server(), handler)
 
 	// Register Struct as Subscriber
-	micro.RegisterSubscriber(topicAll, service.Server(), new(subscriber.User))
+	err = micro.RegisterSubscriber(topicAll, service.Server(), new(subscriber.User))
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// Run service
 	if err := service.Run(); err != nil {
