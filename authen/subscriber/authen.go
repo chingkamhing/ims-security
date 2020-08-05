@@ -15,10 +15,12 @@ import (
 	"creapptive.com/ims-security/lib"
 )
 
+// AllEvent structure
 type AllEvent struct {
 	repo repository.Interface
 }
 
+// NewAllEvent create new event context
 func NewAllEvent() *AllEvent {
 	return &AllEvent{
 		repo: repository.NewWithMigrateUp(),
@@ -26,17 +28,18 @@ func NewAllEvent() *AllEvent {
 }
 
 // Open open repository
-func (allEvent *AllEvent) Open() error {
+func (allEvent *AllEvent) Open(ctx context.Context, h interface{}) error {
 	err := allEvent.repo.Open()
 	return err
 }
 
 // Close close repository
-func (allEvent *AllEvent) Close() error {
+func (allEvent *AllEvent) Close(ctx context.Context, h interface{}) error {
 	err := allEvent.repo.Close()
 	return err
 }
 
+// Handle handle async message
 func (allEvent *AllEvent) Handle(ctx context.Context, msg *message.TopicAllMessage) error {
 	//FIXME, what if there is any error here? user service already created a new user while authen service fail, how to handle this???
 	log.Info("Received all event: %v", msg.Event)
@@ -46,7 +49,7 @@ func (allEvent *AllEvent) Handle(ctx context.Context, msg *message.TopicAllMessa
 		if err != nil {
 			return err
 		}
-		userId, err := primitive.ObjectIDFromHex(user.Id)
+		userID, err := primitive.ObjectIDFromHex(user.Id)
 		if err != nil {
 			return err
 		}
@@ -55,15 +58,15 @@ func (allEvent *AllEvent) Handle(ctx context.Context, msg *message.TopicAllMessa
 			return err
 		}
 		authenUser := &authenModel.User{
-			ID:       userId,
+			ID:       userID,
 			Username: user.Username,
 			Password: password,
 		}
-		authenId, err := allEvent.repo.CreateUser(authenUser)
+		authenID, err := allEvent.repo.CreateUser(authenUser)
 		if err != nil {
 			return err
 		}
-		log.Infof("CreateUser: %v", authenId)
+		log.Infof("CreateUser: %v", authenID)
 	}
 	return nil
 }
