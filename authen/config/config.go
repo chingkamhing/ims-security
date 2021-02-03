@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/asim/go-micro/v3/config"
+	"github.com/asim/go-micro/v3/config/source/file"
 	"github.com/micro/cli/v2"
-	"github.com/micro/go-micro/v2/config"
-	"github.com/micro/go-micro/v2/config/source/file"
 )
 
 // default settings

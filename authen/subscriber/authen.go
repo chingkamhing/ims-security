@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 
-	log "github.com/micro/go-micro/v2/logger"
+	log "github.com/asim/go-micro/v3/logger"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	message "creapptive.com/ims-security/api/message"

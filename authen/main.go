@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/asim/go-micro/v3"
+	log "github.com/asim/go-micro/v3/logger"
 	"github.com/micro/cli/v2"
-	"github.com/micro/go-micro/v2"
-	log "github.com/micro/go-micro/v2/logger"
 
 	authen "creapptive.com/ims-security/api/authen"
 	"creapptive.com/ims-security/authen/cmd"

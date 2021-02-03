@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/micro/go-micro/v2"
-	"github.com/micro/go-micro/v2/client"
-	log "github.com/micro/go-micro/v2/logger"
+	"github.com/asim/go-micro/v3"
+	"github.com/asim/go-micro/v3/client"
+	log "github.com/asim/go-micro/v3/logger"
 
 	message "creapptive.com/ims-security/api/message"
 	"creapptive.com/ims-security/user/repository"

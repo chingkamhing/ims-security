@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"time"
 
+	log "github.com/asim/go-micro/v3/logger"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/mongodb"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
-	log "github.com/micro/go-micro/v2/logger"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 

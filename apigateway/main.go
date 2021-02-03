@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
+	log "github.com/asim/go-micro/v3/logger"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	log "github.com/micro/go-micro/v2/logger"
 	"google.golang.org/grpc"
 
 	apigateway "creapptive.com/ims-security/api/apigateway"

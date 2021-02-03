@@ -3,8 +3,8 @@ package handler
 import (
 	"context"
 
-	"github.com/micro/go-micro/v2/client"
-	log "github.com/micro/go-micro/v2/logger"
+	"github.com/asim/go-micro/v3/client"
+	log "github.com/asim/go-micro/v3/logger"
 
 	authen "creapptive.com/ims-security/api/authen"
 	gateway "creapptive.com/ims-security/api/gateway"
