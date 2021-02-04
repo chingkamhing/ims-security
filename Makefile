@@ -13,14 +13,6 @@ build:
 	make -C authen
 	make -C user
 
-# generate proto files and build gateway and services
-.PHONY: all
-all: proto
-	make -C apigateway
-	make -C gateway
-	make -C authen
-	make -C user
-
 # make proto for various directories
 .PHONY: proto
 proto:
@@ -49,6 +41,10 @@ docker: proto
 	docker build -f gateway/Dockerfile -t ims_security/gateway .
 	docker build -f authen/Dockerfile -t ims_security/authen .
 	docker build -f user/Dockerfile -t ims_security/user .
+
+# generate proto files and build gateway and services
+.PHONY: all
+all: proto build
 
 .PHONY: clean
 clean:
